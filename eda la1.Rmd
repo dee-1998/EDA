@@ -1,0 +1,242 @@
+---
+title: "eda la1"
+output: html_document
+---
+```{r}
+df <- read.csv("C:/Users/HP/Desktop/COVID-19 India Statewise Vaccine Data.csv")
+head(df)
+```
+
+
+```{r}
+```
+
+
+```{r}
+```
+```{r}
+class(df)
+class(df$State.UTs)
+class(df$Dose.1)
+class(df$Dose.2)
+```
+
+
+```{r}
+class(dimnames(df))
+head(df)
+head(df,n=3)
+tail(df)
+tail(df,n=3)
+summary(df$Dose.1)
+
+mean(df$Dose.1)
+median(df$Dose.1)
+mad(df$Dose.1)
+mode(df$Dose.1)
+var(df$Dose.1)
+sd(df$Dose.1)
+quantile(df$Dose.1)
+fivenum(df$Dose.1)
+
+var.test(df$Dose.1,df$Dose.2)
+str(df)
+head(structure(df))
+ls.str(df)
+ls.str(pattern='df')
+names(df)
+row.names(df)
+colnames(df)
+dimnames(df)
+length(df)
+head(df$Dose.1)
+df$Dose.1[3]
+df$Dose.1[1:5]
+tdf=attach(df)
+max(df$Dose.1)
+max(df$Dose.2)
+min(df$Dose.1)
+min(df$Dose.2)
+head(stack(df))
+head(sort(df$Dose.1))
+head(sort(df$Dose.2))
+head(order(df$Dose.1))
+head(rank(df$Dose.1),n=10)
+df[3,3]
+df[3, 1:3]
+head(as.matrix(df))
+head(rbind(df))
+head(cbind(df))
+head(cumsum(df$Dose.1))
+head(cummax(df$Dose.1))
+head(cummin(df$Dose.1))
+head(cumprod(df$Dose.1))
+table(df$Dose.1)
+head(as.table(df$Dose.1))
+is.data.frame(df)
+is.table(df)
+seq_along(df)
+stem(df$Dose.1)
+stem(df$Dose.1,scale=2)
+hist(df$Dose.1)
+hist(df$Dose.2)
+hist(df$Total.Vaccination.Doses)
+
+density(df$Dose.1)
+plot(density(df$Dose.1))
+plot(density(df$Dose.2))
+plot(density(df$Total.Vaccination.Doses))
+hist(df$Dose.1,freq=F)
+lines(density(df$Dose.1,lty=2))
+lines(density(df$Dose.1,k='rectangular'))
+sample(df$Dose.1,size = 2)
+sample(df$Dose.1,size=2,replace=TRUE)
+sample(df$Dose.1[df$Dose.1<50962])
+sample(df$Dose.1[df$Dose.1>7750023])
+head(rnorm(df$Dose.1,mean=0,sd=1))
+head(pnorm(df$Dose.1,mean=0,sd=1))
+head(qnorm(df$Dose.1,mean=0,sd=1))
+qqnorm(df$Dose.1)
+qqnorm(df$Total.Vaccination.Doses)
+qqnorm(df$Dose.1,main='QQ plot of example data',xlab='Theoretical',ylab='Quantiles for data')
+qqline(df$Dose.1,lwd=2,lty=2)
+qqp=qqplot(df$Dose.1,rnorm(50,5,2))
+abline(lm(qqp$y ~ qqp$x))
+
+t.test(df$Dose.1,df$Total.Vaccination.Doses)
+t.test(df$Dose.1,df$Total.Vaccination.Doses,var.equal=TRUE)
+t.test(df$Dose.1,mu=5)
+t.test(df$Dose.1,mu=5,alternative='greater')
+
+
+cor(df$Dose.1,df$Dose.2)
+x=cov(df$Dose.1,df$Dose.2)
+x
+v=as.matrix(x)
+cov2cor(v)
+cor.test(df$Dose.1,df$Dose.2)
+chisq.test(df$Dose.1)
+
+    
+
+boxplot(df$Dose.1)
+boxplot(df$Dose.1,df$Total.Vaccination.Doses)
+boxplot(df$Dose.1 ~ df$State.UTs ,data=df)
+boxplot(df$Dose.1 ~ df$Dose.2 ,data=df)
+boxplot(df$Dose.2 ~ df$State.UTs ,data=df)
+boxplot(df$Dose.2 ~ df$Dose.1, data=df)
+boxplot(df$Dose.1,horizontal = T)
+pairs( ~ Dose.1 + Dose.2,data=df)
+plot(df$Dose.1,type='b')
+pie(df$Dose.1)
+pie(df$Dose.2)
+pie(df$Total.Vaccination.Doses)
+dotchart(df$Dose.1)
+dotchart(df$Dose.2)
+dotchart(df$Total.Vaccination.Doses)
+table(df$Dose.1)
+table(df$Dose.2)
+table(df$Total.Vaccination.Doses)
+temp.aov=na.omit(aov(df$Dose.1 ~ df$Dose.2,data=df))
+summary(temp.aov)
+interaction.plot(df$Dose.1,df$Dose.2,df$Total.Vaccination.Doses)
+factor(df$State.UTs)
+factor(df$Dose.1)
+factor(df$Dose.2)
+factor(df$Total.Vaccination.Doses)
+testCol=c(rep(df$Dose.1-df$Dose.2,length(df)))
+head(testCol)
+test=data.frame(df,testCol)
+head(test)
+col(df,as.factor=F)
+col(df,as.factor=T)
+apply(df[ , 2:3], 2, median)
+apply(df[ , 2:3], 2, var)
+tapply(df$Dose.1,df$State.UTs,FUN = mean)
+tapply(df$Dose.1,df$State.UTs,FUN = var)
+tapply(df$Dose.2,df$State.UTs,FUN = mean)
+tapply(df$Dose.2,df$State.UTs,FUN = var)
+tapply(df$Dose.2,df$Total.Vaccination.Doses,FUN = var)
+tapply(df$Dose.2,df$Total.Vaccination.Doses,FUN = mean)
+tapply(df$Dose.1,df$Total.Vaccination.Doses,FUN = mean)
+tapply(df$Dose.1,df$Total.Vaccination.Doses,FUN = var)
+aggregate(df[ , 2:3], by = list(df$State.UTs), FUN=mean)
+aggregate(df[ , 2:3], by = list(df$Dose.1), FUN=mean)
+aggregate(df[ , 2:3], by = list(df$Dose.2), FUN=mean)
+aggregate(df[ , 2:3], by = list(df$State.UTs), FUN=var)
+aggregate(df[ , 2:3], by = list(df$Dose.1), FUN=var)
+aggregate(df[ , 2:3], by = list(df$Dose.2), FUN=var)
+aggregate(df[ , 2:3], by = list(df$Total.Vaccination.Doses), FUN=mean)
+aggregate(df[ , 2:3], by = list(df$Total.Vaccination.Doses), FUN=var)
+aggregate(cbind(df$Dose.1,df$Dose.2),data=df, by=list(df$Total.Vaccination.Doses),FUN=mean)
+aggregate(df$Dose.1 ~ df$State.UTs , data=df,FUN=mean)
+aggregate(df$Dose.2~ df$State.UTs , data=df,FUN=mean)
+aggregate(df$Dose.2~ df$State.UTs , data=df,FUN=var)
+aggregate(df$Dose.1 ~df$State.UTs, data=df,FUN=var)
+aggregate(df$Total.Vaccination.Doses~df$State.UTs,FUN=mean)
+head(na.omit(df))
+objects(df)
+ls(df)
+dflm=lm(Dose.1 ~ Dose.2,data=df)
+dflm
+cor.test(~ df$Dose.1+df$Dose.2,data=df)
+coef(dflm)
+confint(dflm)
+head(fitted(dflm))
+head(residuals(dflm))
+formula(dflm)
+dflm$call
+formula(df)
+df.m=apply(df[ , 2:3], 2,mean)
+df.m
+df.sd=apply(df[ , 2:3], 2,sd)
+df.sd
+df.s=apply(df[ , 2:3], 2,sum)
+df.s
+df.1=df.s/df.m
+df.1
+df.se=df.sd/sqrt(df.1)
+df.se
+df.m+df.se
+max(df.m+df.se)
+df.max=round(max(df.m+df.se) +0.5,0)
+df.max
+bp=barplot(df.m,ylim=c(0,df.max))
+bp
+
+
+
+
+```
+
+
+
+```
+
+
+
+
+  
+
+
+
+
+
+     
+     
+
+     
+     
+
+
+     
+
+
+
+```
+
+
+```{r}
+
+```
+
